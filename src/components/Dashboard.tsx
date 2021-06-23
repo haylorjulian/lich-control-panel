@@ -157,7 +157,7 @@ export default function Dashboard(){
                   <td>{rdp.target}</td>
                   <td>{rdp.pumps}</td>
                   <td>{rdp.ranking}</td>
-                  <td><button className={rdp.status == "Pumping" ? styles.stop : styles.reassign}>{rdp.status == "Pumping" ? "Stop" : "Reassign"}</button></td>
+                  <td><button className={rdp.status === "Pumping" ? styles.stop : styles.reassign}>{rdp.status === "Pumping" ? "Stop" : "Reassign"}</button></td>
                 </tr>
               ))}
             </tbody>
