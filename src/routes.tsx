@@ -2,10 +2,15 @@ import React from 'react';
 
 import {Switch, Route, Link} from 'react-router-dom'
 
+import Dashboard from './components/Dashboard'
+
+import styles from "./components/Routes.module.scss";
+
 export default function Routes(){
     return (
-
-          <div>
+          <div className={styles.routewrap}>
+          <div className={styles.header}>
+            <p className={styles.title}>Lich Dashboard</p>
             <nav>
               <ul>
               <li>
@@ -16,14 +21,14 @@ export default function Routes(){
                 </li>
               </ul>
             </nav>
-
+            </div>
 
             <Switch>
               <Route path="/cmc-trends">
                 <h1>CMC Trends</h1>
               </Route>
               <Route path="/dashboard">
-                <h1>Dashboard</h1>
+                <Dashboard></Dashboard>
               </Route>
               <Route path="/login">
                 <h1>Login</h1>

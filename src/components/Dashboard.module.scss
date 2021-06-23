@@ -1,0 +1,17 @@
+.dashwrap {
+  margin-top: 80px;
+  h1 {
+    margin: 120px 0 50px 0;
+  }
+  table {
+        margin: 50px auto;
+        border-collapse: collapse;
+        tr {
+          border-top-color: rgba(0,0,0,.12);
+          border-bottom: 1px solid #eee;
+          td, th {
+            padding: 15px;
+          }
+        }
+  }
+}
