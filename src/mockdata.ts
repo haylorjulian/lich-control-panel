@@ -1,0 +1,32 @@
+export const instances = [
+  {
+    id: 734238722,
+    name: "Lich 1",
+    ip: "122.122.344.133",
+    service: "Service 1",
+    status: "Pumping",
+    targetId: "HODL",
+    pumpsCount: 125,
+    cmcRank: 2,
+  },
+  {
+    id: 73485722,
+    name: "Lich 2",
+    ip: "122.122.344.133",
+    service: "Service 1",
+    status: "Idle",
+    targetId: "HODL",
+    pumpsCount: 350,
+    cmcRank: 2,
+  },
+  {
+    id: 73481722,
+    name: "Lich 3",
+    ip: "122.122.344.133",
+    service: "Service 1",
+    status: "Pumping",
+    targetId: "HODL",
+    pumpsCount: 400,
+    cmcRank: 2,
+  },
+];

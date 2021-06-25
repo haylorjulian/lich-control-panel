@@ -2,6 +2,8 @@ import React from "react";
 
 import { Switch, Route, Link } from "react-router-dom";
 
+import { instances } from "./mockdata";
+
 import Dashboard from "./components/Dashboard";
 
 import styles from "./components/Routes.module.scss";
@@ -28,7 +30,7 @@ export default function Routes() {
           <h1>CMC Trends</h1>
         </Route>
         <Route path="/dashboard">
-          <Dashboard></Dashboard>
+          <Dashboard instances={instances}></Dashboard>
         </Route>
         <Route path="/login">
           <h1>Login</h1>
