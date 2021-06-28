@@ -1,6 +1,7 @@
 // @ts-nocheck
 
 import React, { useState } from "react";
+// import { instances } from "../mockdata";
 
 import styles from "./Dashboard.module.scss";
 
@@ -16,18 +17,18 @@ type Instance = {
 };
 
 type Props = {
-  instances: Instance[];
+  instances: any;
 };
 
-export default function Dashboard({ instances }: Props) {
+export default function Dashboard({ instances }: Props | null) {
   // Type check
-  const [sortConfig, setSortConfig] = React.useState({
+  const [sortConfig, setSortConfig] = useState({
     key: "name",
     direction: "ascending",
   });
 
-  let sortedInstances = [...instances];
-  sortedInstances.sort((a, b) => {
+  let sortedInstances = instances;
+  sortedInstances?.sort((a, b) => {
     if (a[sortConfig.key] < b[sortConfig.key]) {
       return sortConfig.direction === "ascending" ? -1 : 1;
     }
@@ -64,17 +65,17 @@ export default function Dashboard({ instances }: Props) {
                 Service
               </button>
             </th>
-            <th>
+            {/* <th>
               <button type="button" onClick={() => requestSort("status")}>
                 Status
               </button>
-            </th>
+            </th> */}
             <th>
-              <button type="button" onClick={() => requestSort("target")}>
+              <button type="button" onClick={() => requestSort("targetId")}>
                 Target coin
               </button>
             </th>
-            <th>
+            {/* <th>
               <button type="button" onClick={() => requestSort("pumpsCount")}>
                 No. Pumps
               </button>
@@ -83,22 +84,22 @@ export default function Dashboard({ instances }: Props) {
               <button type="button" onClick={() => requestSort("cmcRank")}>
                 CMC Ranking
               </button>
-            </th>
+            </th> */}
             <th>Modify</th>
           </tr>
         </thead>
         <tbody>
-          {sortedInstances.map((instance) => (
-            <tr key={instance.id}>
+          {instances?.map((instance) => (
+            <tr key={instance._id}>
               <td>{instance.name}</td>
               <td>{instance.ip}</td>
               <td>{instance.service}</td>
-              <td>{instance.status}</td>
+              {/* <td>{instance.status}</td> */}
               <td>{instance.targetId}</td>
-              <td>{instance.pumpsCount}</td>
-              <td>{instance.cmcRank}</td>
+              {/* <td>{instance.pumpsCount}</td> */}
+              {/* <td>{instance.cmcRank}</td> */}
               <td>
-                <button
+                {/* <button
                   className={
                     instance.status === "Pumping"
                       ? styles.stop
@@ -106,7 +107,7 @@ export default function Dashboard({ instances }: Props) {
                   }
                 >
                   {instance.status === "Pumping" ? "Stop" : "Reassign"}
-                </button>
+                </button> */}
               </td>
             </tr>
           ))}

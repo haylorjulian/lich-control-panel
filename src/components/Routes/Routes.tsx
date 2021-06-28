@@ -1,14 +1,13 @@
-import React from "react";
-
 import { Switch, Route, Link } from "react-router-dom";
 
-import { instances } from "./mockdata";
+import Dashboard from "../Dashboard/Dashboard";
 
-import Dashboard from "./components/Dashboard";
+import { useFetchInstances } from "../../api/instances";
 
-import styles from "./components/Routes.module.scss";
+import styles from "./Routes.module.scss";
 
-export default function Routes() {
+export function Routes() {
+  const { data: instances } = useFetchInstances();
   return (
     <div className={styles.routewrap}>
       <div className={styles.header}>
