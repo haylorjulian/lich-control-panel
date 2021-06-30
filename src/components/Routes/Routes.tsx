@@ -7,7 +7,7 @@ import { useFetchInstances } from "../../api/instances";
 import styles from "./Routes.module.scss";
 
 export function Routes() {
-  const { data: instances } = useFetchInstances();
+  const { data: instances, isFetched } = useFetchInstances();
   return (
     <div className={styles.routewrap}>
       <div className={styles.header}>
@@ -29,7 +29,7 @@ export function Routes() {
           <h1>CMC Trends</h1>
         </Route>
         <Route path="/dashboard">
-          <Dashboard instances={instances}></Dashboard>
+          {isFetched ? <Dashboard instances={instances!}></Dashboard> : null}
         </Route>
         <Route path="/login">
           <h1>Login</h1>
