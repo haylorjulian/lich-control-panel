@@ -1,15 +1,13 @@
-import React from 'react';
-import {BrowserRouter as Router} from 'react-router-dom'
-import Routes from './routes'
-import "./components/index.scss";
-
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router } from "react-router-dom";
+import { Routes } from "./components";
+import { Navbar } from "./components/Navbar/Navbar";
+import "./index.scss";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Router>
+        <Navbar />
         <Routes />
       </Router>
     </div>
