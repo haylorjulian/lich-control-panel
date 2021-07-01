@@ -7,6 +7,7 @@ interface State<T> {
   status: "init" | "fetching" | "error" | "fetched";
   data?: T;
   error?: string;
+  isFetched?: boolean;
 }
 
 interface Cache<T> {
@@ -29,6 +30,7 @@ export function useFetch<T = unknown>(
     status: "init",
     error: undefined,
     data: undefined,
+    isFetched: false,
   };
 
   // Keep state logic separated
@@ -37,7 +39,12 @@ export function useFetch<T = unknown>(
       case "request":
         return { ...initialState, status: "fetching" };
       case "success":
-        return { ...initialState, status: "fetched", data: action.payload };
+        return {
+          ...initialState,
+          status: "fetched",
+          data: action.payload,
+          isFetched: true,
+        };
       case "failure":
         return { ...initialState, status: "error", error: action.payload };
       default:
