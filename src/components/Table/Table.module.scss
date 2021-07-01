@@ -1,0 +1,23 @@
+table {
+  margin: 50px auto;
+  border-collapse: collapse;
+  tr {
+    border-top-color: rgba(0, 0, 0, 0.12);
+    border-bottom: 1px solid #eee;
+    td,
+    th {
+      padding: 15px;
+      button {
+        border: none;
+        font-size: 1.6rem;
+        padding: 10px 15px;
+      }
+      .stop {
+        background: #ffcdd2;
+      }
+      .reassign {
+        background: #e0f2f1;
+      }
+    }
+  }
+}
