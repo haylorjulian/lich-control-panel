@@ -18,5 +18,6 @@ export const instancesTableColumns = [
   {
     Header: "Modify",
     accessor: "_id",
+    Cell: "Assignbutton",
   },
 ];

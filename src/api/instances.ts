@@ -1,6 +1,6 @@
 import { Instance } from "../components/types";
 import { useFetch } from "./utils";
-import axios, { AxiosRequestConfig } from "axios";
+import axios from "axios";
 
 const fetchUrl = "http://localhost:3001/api/instances";
 
@@ -10,12 +10,15 @@ export function useFetchInstances() {
 }
 
 
-export function reassignTarget(instanceId: number, targetId: number) {
+export async function reassignTarget(instanceId: number, targetId: number) {
   const putUrl = "http://localhost:3001/api/instances/" + instanceId;
-  const updatedInstance = { targetId: 123 };
-  axios.put(putUrl, updatedInstance).then(response => {
-    console.log(response)
-})
+  const updatedInstance = { targetId: targetId };
+  try {
+    const response = await axios.put(putUrl, updatedInstance);
+    console.log(response); 
+  } catch(e) {
+    console.log(e);
+  }
 // const state = useFetch<Instance[]>(putUrl, updatedInstance);
 // return state;
 }
