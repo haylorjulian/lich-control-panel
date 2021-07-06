@@ -1,4 +1,3 @@
-// @ts-nocheck;
 import "./Assignbutton.module.scss";
 import { reassignTarget } from "../../api/instances";
 
