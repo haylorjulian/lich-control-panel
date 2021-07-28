@@ -13,8 +13,5 @@ export default function Dashboard({ instances }: Props) {
 
   const columns = useMemo(() => instancesTableColumns, []);
 
-  console.log(data);
-  
-
   return <Table columns={columns} data={data} />;
 }

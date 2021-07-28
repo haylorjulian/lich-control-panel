@@ -16,6 +16,10 @@ export const instancesTableColumns = [
     accessor: "targetId",
   },
   {
+    Header: "Total Pumps",
+    accessor: "pumpsCount",
+  },
+  {
     Header: "Modify",
     accessor: "_id",
     Cell: "Assignbutton",

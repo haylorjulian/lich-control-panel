@@ -1,5 +1,5 @@
 export type Instance = {
-  id: number;
+  _id: string;
   name: string;
   ip: string;
   service: string;
@@ -7,4 +7,10 @@ export type Instance = {
   targetId: string;
   pumpsCount: number;
   cmcRank: number;
+};
+
+export type PumpReport = {
+  targetId: string;
+  instanceId: string;
+  numberOfPumps: number;
 };

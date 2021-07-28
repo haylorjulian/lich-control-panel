@@ -6,8 +6,16 @@ type Props = {
   cellId: number;
 };
 
-export function Assignbutton(props: Props) {
+export function Assignbutton({ targetId, cellId }: Props) {
   return (
-    <button onClick={(event: React.MouseEvent<HTMLElement>) => {props.targetId === "-1" ? reassignTarget(props.cellId, 0) : reassignTarget(props.cellId, -1)}}>{props.targetId === "-1" ? "Assign" : "Stop"}</button>
+    <button
+      onClick={(e: React.MouseEvent<HTMLElement>) => {
+        targetId === "-1"
+          ? reassignTarget(cellId, 0)
+          : reassignTarget(cellId, -1);
+      }}
+    >
+      {targetId === "-1" ? "Assign" : "Stop"}
+    </button>
   );
 }
