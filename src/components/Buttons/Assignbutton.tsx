@@ -1,21 +1,13 @@
-import "./Assignbutton.module.scss";
-import { reassignTarget } from "../../api/instances";
+import "./AssignButton.module.scss";
+import { assignInstance } from "../../api/instances";
 
 type Props = {
   targetId: string;
-  cellId: number;
+  instanceId: string;
 };
 
-export function Assignbutton({ targetId, cellId }: Props) {
+export function AssignButton({ targetId, instanceId }: Props) {
   return (
-    <button
-      onClick={(e: React.MouseEvent<HTMLElement>) => {
-        targetId === "-1"
-          ? reassignTarget(cellId, 0)
-          : reassignTarget(cellId, -1);
-      }}
-    >
-      {targetId === "-1" ? "Assign" : "Stop"}
-    </button>
+    <button onClick={() => assignInstance(instanceId, targetId)}>Assign</button>
   );
 }

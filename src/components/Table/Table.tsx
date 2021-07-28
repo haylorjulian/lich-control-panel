@@ -1,5 +1,6 @@
 import { useTable, useSortBy } from "react-table";
-import { Assignbutton } from "../Buttons/Assignbutton";
+import { AssignButton } from "../Buttons/AssignButton";
+import { StopButton } from "../Buttons/StopButton";
 
 import "./Table.module.scss";
 
@@ -36,13 +37,19 @@ export function Table({ columns, data }: { columns: any; data: any }) {
             <tr {...row.getRowProps()}>
               {row.cells.map((cell) => {
                 if (cell.column.Cell === "Assignbutton") {
-                  const targetId = cell.row.values.targetId;
+                  const currentTargetId = cell.row.values.targetId;
+                  // TODO: Remove
+                  const targetId = "111";
                   return (
                     <td {...cell.getCellProps()}>
-                      <Assignbutton
-                        targetId={targetId}
-                        cellId={cell.value}
-                      ></Assignbutton>
+                      {currentTargetId === "-1" ? (
+                        <AssignButton
+                          targetId={targetId}
+                          instanceId={cell.value}
+                        />
+                      ) : (
+                        <StopButton instanceId={cell.value} />
+                      )}
                     </td>
                   );
                 } else {
