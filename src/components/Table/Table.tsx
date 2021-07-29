@@ -2,9 +2,9 @@ import { useTable, useSortBy } from "react-table";
 import { AssignButton } from "../Buttons/AssignButton";
 import { StopButton } from "../Buttons/StopButton";
 
-import "./Table.module.scss";
+import styles from "./Table.module.scss";
 
-export function Table({ columns, data }: { columns: any; data: any }) {
+export function Table({ columns, data, isEditMode }: { columns: any; data: any; isEditMode: boolean }) {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable(
       {
@@ -34,7 +34,7 @@ export function Table({ columns, data }: { columns: any; data: any }) {
         {rows.map((row, i) => {
           prepareRow(row);
           return (
-            <tr {...row.getRowProps()}>
+            <tr className={isEditMode ? styles.editMode : styles.viewMode} {...row.getRowProps()}>
               {row.cells.map((cell) => {
                 if (cell.column.Cell === "Assignbutton") {
                   const currentTargetId = cell.row.values.targetId;
@@ -46,7 +46,6 @@ export function Table({ columns, data }: { columns: any; data: any }) {
                         <AssignButton
                           targetId={targetId}
                           instanceId={cell.value}
-                          buttonState="button"
                         />
                       ) : (
                         <StopButton instanceId={cell.value} />

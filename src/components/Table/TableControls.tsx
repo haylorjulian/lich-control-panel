@@ -1,9 +1,21 @@
+// @ts-nocheck
 
-export function TableControls() {
+import { BulkSelectButton } from "../Buttons/BulkSelectButton";
+
+type Props = {
+    toggleEditMode: () => void,
+    isEditMode: boolean,
+}
+
+export function TableControls({toggleEditMode, isEditMode} : Props) {
+
+    console.log(toggleEditMode);
+    
+    
       return (
         <div>
             <button>Select all</button>
-            <button>Bulk select</button>
+            <BulkSelectButton toggleEditMode={toggleEditMode} isEditMode={isEditMode}/>
         </div>
       );
   }

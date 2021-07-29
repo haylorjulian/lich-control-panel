@@ -1,4 +1,5 @@
-import { useMemo } from "react";
+
+import { useMemo, useState, useCallback } from "react";
 
 import { Table } from "../Table/Table";
 import { TableControls } from "../Table/TableControls";
@@ -7,11 +8,8 @@ import { instancesTableColumns } from "./consts";
 
 import styles from "./Dashboard.module.scss";
 
-console.log(styles);
-
-
 type Props = {
-  instances: Instance[];
+  instances: Instance[],
 };
 
 export default function Dashboard({ instances }: Props) {
@@ -19,10 +17,17 @@ export default function Dashboard({ instances }: Props) {
 
   const columns = useMemo(() => instancesTableColumns, []);
 
+  const [isEditMode, setEditMode] = useState(false);
+
+  const toggleEditMode = useCallback(() => setEditMode((prevState) => !prevState), [
+    setEditMode,
+  ]);
+  
+
   return (
-    <div className={styles.tablewrap}>
-      <TableControls></TableControls>
-     <Table columns={columns} data={data} />
+    <div className={styles.tableWrap}>
+      <TableControls toggleEditMode={toggleEditMode} isEditMode={isEditMode}></TableControls>
+     <Table isEditMode={isEditMode} columns={columns} data={data} />
     </div>
   );
 }
