@@ -46,6 +46,7 @@ export function Table({ columns, data }: { columns: any; data: any }) {
                         <AssignButton
                           targetId={targetId}
                           instanceId={cell.value}
+                          buttonState="button"
                         />
                       ) : (
                         <StopButton instanceId={cell.value} />

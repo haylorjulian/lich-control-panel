@@ -4,10 +4,17 @@ import { assignInstance } from "../../api/instances";
 type Props = {
   targetId: string;
   instanceId: string;
+  buttonState: string;
 };
 
-export function AssignButton({ targetId, instanceId }: Props) {
+export function AssignButton({ targetId, instanceId, buttonState }: Props) {
+  if (buttonState === "assign") {
   return (
-    <button onClick={() => assignInstance(instanceId, targetId)}>Assign</button>
+    <input id="new-target-id" name="new-target-id" type="text"></input>
   );
+  } else {
+    return (
+      <button onClick={() => buttonState = "assign"}>Assign</button>
+    );
+  }
 }
