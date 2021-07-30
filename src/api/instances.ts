@@ -1,16 +1,15 @@
 import { Instance } from "../components/types";
 import { useFetch } from "./utils/useFetch";
 import axios from "axios";
-
-const fetchUrl = "http://localhost:3001/api/instances";
+import { routes } from "./consts";
 
 export function useFetchInstances() {
-  const state = useFetch<Instance[]>(fetchUrl);
+  const state = useFetch<Instance[]>(routes.INSTANCES);
   return state;
 }
 
 export async function assignInstance(instanceId: string, targetId: string) {
-  const putUrl = "http://localhost:3001/api/instances/" + instanceId;
+  const putUrl = routes.INSTANCES + instanceId;
   try {
     const response = await axios.put(putUrl, { targetId });
     console.log(response);
