@@ -1,8 +1,9 @@
 import { useFetch } from "./utils/useFetch";
 import { countPumps } from "./utils/countPumps";
 import { PumpReport } from "../components/types";
+import { routes } from "./consts";
 
-const fetchUrl = "http://localhost:3001/api/pumps/";
+const fetchUrl = routes.PUMPS;
 
 export function useFetchPumps() {
   const state = useFetch<PumpReport[]>(fetchUrl);
