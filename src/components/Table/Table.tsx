@@ -1,10 +1,11 @@
 // @ts-nocheck
 
-import { useTable, useSortBy } from "react-table";
+import { useTable, useSortBy, TableRowProps } from "react-table";
+import { TableRow } from "./TableRow";
 
-import styles from "./Table.module.scss";
+import "./Table.module.scss";
 
-export function Table({ columns, data, isEditMode, selectedInstances, setSelectedInstances }: { columns: any; data: any; isEditMode: boolean, selectedInstances: array, setSelectedInstances: any}) {
+export function Table({ columns, data, selectedInstances, setSelectedInstances }: { columns: any; data: any; boolean, selectedInstances: array, setSelectedInstances: any}) {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable(
       {
@@ -13,18 +14,6 @@ export function Table({ columns, data, isEditMode, selectedInstances, setSelecte
       },
       useSortBy
     );
-
-
-    function handleRowClick(selectedInstances, currentInstance, editable) {
-      if (editable) {
-      if (selectedInstances.indexOf(currentInstance) > -1) {
-        selectedInstances.splice(selectedInstances.indexOf(currentInstance), 1);
-      } else {
-        selectedInstances.push(currentInstance);
-      }
-      setSelectedInstances(selectedInstances);
-    }
-    }
 
   return (
     <table {...getTableProps()}>
@@ -49,13 +38,7 @@ export function Table({ columns, data, isEditMode, selectedInstances, setSelecte
           prepareRow(row);
 
           return (
-            <tr onClick={() => handleRowClick(selectedInstances, row.original._id, isEditMode)} className={isEditMode ? styles.editMode : styles.viewMode } {...row.getRowProps()}>
-              {row.cells.map((cell) => {
-                  return (
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                  );
-              })}
-            </tr>
+            <TableRow setSelectedInstances={setSelectedInstances} row={row} selectedInstances={selectedInstances}></TableRow>
           );
         })}
       </tbody>

@@ -2,7 +2,6 @@ table {
   margin: 150px auto 50px auto;
   border-collapse: collapse;
   transition: background-color 0.3s ease;
-  background: #e8eaf6;
   tr {
     // border-top-color: rgba(0, 0, 0, 0.12);
     border-bottom: 1px solid #ffffff;
@@ -25,17 +24,18 @@ button {
   cursor: pointer;
 }
 
-.selected {
-  background-color: #9fa8da;
-}
-
-.editMode {
-  background-color: #c5cae9;
+tbody tr {
   cursor: pointer;
-  &:hover {
-    background-color: #9fa8da;
+  &.deselected {
+    background-color: #e8eaf6;
+    &:hover {
+      background-color: #c5cae9;
+    }
   }
   &.selected {
-    background-color: #9fa8da;
+    background-color: #c5cae9;
+    &:hover {
+      background-color: #e8eaf6;
+    }
   }
 }

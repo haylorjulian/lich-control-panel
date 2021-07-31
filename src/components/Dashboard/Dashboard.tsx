@@ -1,5 +1,5 @@
-
-import { useMemo, useState, useCallback } from "react";
+// @ts-nocheck
+import { useMemo, useState } from "react";
 
 import { Table } from "../Table/Table";
 import { TableControls } from "../Table/TableControls";
@@ -15,22 +15,17 @@ type Props = {
 export default function Dashboard({ instances }: Props) {
   const data = useMemo(() => instances, [instances]);
 
+  const allInstanceIds = data.map((instance) => (instance._id));
+
   const columns = useMemo(() => instancesTableColumns, []);
 
-  const [isEditMode, setEditMode] = useState(false);
-
   const [selectedInstances, setSelectedInstances] = useState([]);
-
-
-  const toggleEditMode = useCallback(() => setEditMode((prevState) => !prevState), [
-    setEditMode,
-  ]);
   
 
   return (
     <div className={styles.tableWrap}>
-      <TableControls selectedInstances={selectedInstances} setSelectedInstances={setSelectedInstances} toggleEditMode={toggleEditMode} isEditMode={isEditMode}></TableControls>
-     <Table selectedInstances={selectedInstances} setSelectedInstances={setSelectedInstances} isEditMode={isEditMode} columns={columns} data={data} />
+      <TableControls allInstanceIds={allInstanceIds} selectedInstances={selectedInstances} setSelectedInstances={setSelectedInstances}></TableControls>
+     <Table selectedInstances={selectedInstances} setSelectedInstances={setSelectedInstances} columns={columns} data={data} />
     </div>
   );
 }

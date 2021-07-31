@@ -1,27 +1,24 @@
 // @ts-nocheck
 
-import { BulkSelectButton } from "../Buttons/BulkSelectButton";
 import { StopButton } from "../Buttons/StopButton";
+import { SelectAllButton } from "../Buttons/SelectAllButton";
 import { TargetIdInput } from "../Buttons/TargetIdInput";
 
 import styles from "./TableControls.module.scss";
 
 type Props = {
-    toggleEditMode: () => void,
-    isEditMode: boolean,
-    selectedInstances: Array,
-    setSelectedInstances: any
+    selectedInstances: string[],
+    setSelectedInstances: any,
+    allInstanceIds: string[]
 }
 
-export function TableControls({toggleEditMode, isEditMode, selectedInstances, setSelectedInstances} : Props) {
-
-    console.log(toggleEditMode);
+export function TableControls({selectedInstances, setSelectedInstances, allInstanceIds} : Props) {
     
+    console.log(selectedInstances);
     
       return (
-        <div>
-            <BulkSelectButton toggleEditMode={toggleEditMode} isEditMode={isEditMode}/>
-            <button className>Select all</button>
+        <div styles={styles.tableControls}>
+            <SelectAllButton allInstanceIds={allInstanceIds} setSelectedInstances={setSelectedInstances} selectedInstances={selectedInstances}></SelectAllButton>
             <StopButton selectedInstances={selectedInstances} />
             <TargetIdInput selectedInstances={selectedInstances}/>
         </div>
