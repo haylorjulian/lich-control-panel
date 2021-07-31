@@ -1,14 +1,21 @@
 table {
   margin: 150px auto 50px auto;
   border-collapse: collapse;
+  transition: background-color 0.3s ease;
+  background: #e8eaf6;
   tr {
-    border-top-color: rgba(0, 0, 0, 0.12);
-    border-bottom: 1px solid #eee;
+    // border-top-color: rgba(0, 0, 0, 0.12);
+    border-bottom: 1px solid #ffffff;
     td,
     th {
       padding: 15px;
     }
   }
+}
+
+thead tr {
+  background: #3949ab;
+  color: white;
 }
 
 button {
@@ -18,6 +25,17 @@ button {
   cursor: pointer;
 }
 
+.selected {
+  background-color: #9fa8da;
+}
+
 .editMode {
-  background-color: bisque;
+  background-color: #c5cae9;
+  cursor: pointer;
+  &:hover {
+    background-color: #9fa8da;
+  }
+  &.selected {
+    background-color: #9fa8da;
+  }
 }

@@ -19,6 +19,9 @@ export default function Dashboard({ instances }: Props) {
 
   const [isEditMode, setEditMode] = useState(false);
 
+  const [selectedInstances, setSelectedInstances] = useState([]);
+
+
   const toggleEditMode = useCallback(() => setEditMode((prevState) => !prevState), [
     setEditMode,
   ]);
@@ -26,8 +29,8 @@ export default function Dashboard({ instances }: Props) {
 
   return (
     <div className={styles.tableWrap}>
-      <TableControls toggleEditMode={toggleEditMode} isEditMode={isEditMode}></TableControls>
-     <Table isEditMode={isEditMode} columns={columns} data={data} />
+      <TableControls selectedInstances={selectedInstances} setSelectedInstances={setSelectedInstances} toggleEditMode={toggleEditMode} isEditMode={isEditMode}></TableControls>
+     <Table selectedInstances={selectedInstances} setSelectedInstances={setSelectedInstances} isEditMode={isEditMode} columns={columns} data={data} />
     </div>
   );
 }
