@@ -2,6 +2,8 @@
 
 import { assignInstance } from "../../api/instances";
 
+import styles from "../Table/TableControls.module.scss";
+
 type Props = {
   selectedInstances: string[];
 };
@@ -12,5 +14,5 @@ export function StopButton({ selectedInstances }: Props) {
         assignInstance(instanceId, "-1")
     });
 }
-  return <button onClick={() => assignInstances(selectedInstances)}>Stop</button>;
+  return <button className={styles.stop} onClick={() => assignInstances(selectedInstances)}>Stop</button>;
 }

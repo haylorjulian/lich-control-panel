@@ -17,7 +17,7 @@ export function TableControls({selectedInstances, setSelectedInstances, allInsta
     console.log(selectedInstances);
     
       return (
-        <div styles={styles.tableControls}>
+        <div className={styles.tableControls}>
             <SelectAllButton allInstanceIds={allInstanceIds} setSelectedInstances={setSelectedInstances} selectedInstances={selectedInstances}></SelectAllButton>
             <StopButton selectedInstances={selectedInstances} />
             <TargetIdInput selectedInstances={selectedInstances}/>
