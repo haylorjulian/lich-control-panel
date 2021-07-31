@@ -22,7 +22,7 @@ export function TableControls({toggleEditMode, isEditMode, selectedInstances, se
         <div>
             <BulkSelectButton toggleEditMode={toggleEditMode} isEditMode={isEditMode}/>
             <button className>Select all</button>
-            <StopButton instanceId={'111'} />
+            <StopButton selectedInstances={selectedInstances} />
             <TargetIdInput selectedInstances={selectedInstances}/>
         </div>
       );
