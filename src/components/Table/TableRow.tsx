@@ -1,37 +1,37 @@
-// @ts-nocheck
-
-// import { useTable, useSortBy, TableRowProps } from "react-table";
-
-import { useState } from "react";
-
 import styles from "./Table.module.scss";
 
-export function TableRow({row, selectedInstances, setSelectedInstances} : Props) {
+type Props = {
+  row: any;
+  selectedInstances: string[];
+  setSelectedInstances: any;
+};
 
-    const [isSelected, setAsSelected] = useState(false);
+export function TableRow({
+  row,
+  selectedInstances,
+  setSelectedInstances,
+}: Props) {
+  const isSelected = selectedInstances.includes(row.original._id);
 
-    function handleRowClick(selectedInstances, currentInstance) {
-        if (selectedInstances.indexOf(currentInstance) > -1) {
-          selectedInstances.splice(selectedInstances.indexOf(currentInstance), 1);
-        } else {
-          selectedInstances.push(currentInstance);
-        }
-        setAsSelected(isSelected => !isSelected);
-        setSelectedInstances(selectedInstances);    
-      }
+  function handleClick() {
+    if (isSelected) {
+      const index = selectedInstances.indexOf(row.original._id);
+      const filtered = selectedInstances.filter((_, i) => i !== index);
+      setSelectedInstances(filtered);
+    } else {
+      setSelectedInstances([...selectedInstances, row.original._id]);
+    }
+  }
 
-    //   if (selectedInstances.indexOf(row.original._id) > -1) {
-    //     setAsSelected(true);
-    //   }
-    
-    
-    return (
-        <tr className={isSelected ? styles.selected : styles.deselected} onClick={() => handleRowClick(selectedInstances, row.original._id)} {...row.getRowProps()}>
-        {row.cells.map((cell) => {
-            return (
-              <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-            );
-        })}
-      </tr>
-    );
+  return (
+    <tr
+      className={isSelected ? styles.selected : styles.deselected}
+      onClick={handleClick}
+      {...row.getRowProps()}
+    >
+      {row.cells.map((cell: any) => {
+        return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
+      })}
+    </tr>
+  );
 }
