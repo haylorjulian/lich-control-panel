@@ -11,15 +11,16 @@ export function SelectAllButton({
   setSelectedInstances,
   selectedInstances,
 }: Props) {
+  var allInstancesSelected = selectedInstances.length === allInstanceIds.length;
   return (
     <button
       onClick={() =>
-        selectedInstances.length === allInstanceIds.length
-          ? setSelectedInstances([])
+        
+        allInstancesSelected ? setSelectedInstances([])
           : setSelectedInstances(allInstanceIds)
       }
     >
-      Select all
+      {allInstancesSelected ? "Deselect all" : "Select all"}
     </button>
   );
 }

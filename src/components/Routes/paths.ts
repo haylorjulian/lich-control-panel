@@ -1,2 +1,2 @@
 export const linkToCMC = "/cmc-trends";
-export const linkToDashboard = `/dashboard`;
+export const linkToDashboard = `/`;
