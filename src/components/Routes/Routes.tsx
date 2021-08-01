@@ -20,6 +20,7 @@ export function Routes() {
     const pumpsCount = countPumps(matchingPumpReports!);
     return { ...instance, pumpsCount };
   });
+  
 
   return (
     <Switch>

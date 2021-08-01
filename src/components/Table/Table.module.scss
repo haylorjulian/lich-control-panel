@@ -1,9 +1,11 @@
 table {
-  margin: 150px auto 50px auto;
+  margin: 0px auto 50px auto;
   border-collapse: collapse;
+  transition: background-color 0.3s ease;
+  width: 90vw;
   tr {
-    border-top-color: rgba(0, 0, 0, 0.12);
-    border-bottom: 1px solid #eee;
+    // border-top-color: rgba(0, 0, 0, 0.12);
+    border-bottom: 1px solid #ffffff;
     td,
     th {
       padding: 15px;
@@ -11,9 +13,30 @@ table {
   }
 }
 
+thead tr {
+  background: #3949ab;
+  color: white;
+}
+
 button {
   border: none;
   font-size: 1.6rem;
   padding: 10px 15px;
   cursor: pointer;
+}
+
+tbody tr {
+  cursor: pointer;
+  &.deselected {
+    background-color: #e8eaf6;
+    &:hover {
+      background-color: #c5cae9;
+    }
+  }
+  &.selected {
+    background-color: #c5cae9;
+    &:hover {
+      background-color: #e8eaf6;
+    }
+  }
 }
